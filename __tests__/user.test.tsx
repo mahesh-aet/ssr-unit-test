@@ -13,7 +13,9 @@ describe("user page", () => {
     UserApi.getUsers.mockResolvedValue({ data: mockUsers });
   });
   it("renders user list heading", async () => {
-    const { findByText } = render(<User />);
-    expect(await findByText("user List")).toBeInTheDocument();
+    const ResolvedUser = await User();
+    render(ResolvedUser);
+    // const { findByText } = render(<User />);
+    expect(screen.getByText("user List")).toBeInTheDocument();
   });
 });
